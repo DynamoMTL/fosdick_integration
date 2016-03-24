@@ -13,6 +13,8 @@ class FosdickEndpoint < EndpointBase::Sinatra::Base
       msg = Processor.send_shipment(@payload[:shipment], @config)
       code = 200
     rescue => e
+      Raven.capture_exception(exception)
+
       msg  = e.message
       code = 500
     end
@@ -26,6 +28,8 @@ class FosdickEndpoint < EndpointBase::Sinatra::Base
       shipments  = Processor.receive_results(@config['bucket'], 'ship', "shipments")
       code = 200
     rescue => e
+      Raven.capture_exception(exception)
+
       msg  = e.message
       code = 500
     end
@@ -46,6 +50,8 @@ class FosdickEndpoint < EndpointBase::Sinatra::Base
       inventories  = Processor.receive_results(@config['bucket'], 'inventory')
       code = 200
     rescue => e
+      Raven.capture_exception(exception)
+
       msg  = e.message
       code = 500
     end
