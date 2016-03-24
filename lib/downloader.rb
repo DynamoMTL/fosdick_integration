@@ -12,7 +12,7 @@ class Downloader
 
     objects = nil
     if folder_name.present?
-      objects = @bucket.objects.with_prefix(folder_name)
+      objects = @bucket.objects.with_prefix("#{folder_name}/")
     else
       objects = @bucket.objects
     end
