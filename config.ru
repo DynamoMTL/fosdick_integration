@@ -2,6 +2,9 @@ require 'rubygems'
 require 'bundler'
 
 Bundler.require(:default)
-require "./fosdick_endpoint"
 
+require 'raven'
+use Raven::Rack
+
+require "./fosdick_endpoint"
 run FosdickEndpoint

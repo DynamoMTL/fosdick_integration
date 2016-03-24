@@ -5,6 +5,7 @@ gem 'nokogiri'
 gem 'model_un'
 gem 'aws-sdk'
 gem 'timecop'
+gem 'sentry-raven'
 
 group :development do
   gem 'pry'
